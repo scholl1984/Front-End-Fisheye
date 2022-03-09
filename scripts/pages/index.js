@@ -1,6 +1,7 @@
     async function getPhotographers() {
         // Penser à remplacer par les données récupérées dans le json
         const photographers = [
+            
             {
                 "name": "Ma data test",
                 "id": 1,
