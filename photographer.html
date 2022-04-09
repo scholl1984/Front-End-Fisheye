@@ -9,7 +9,9 @@
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" aria-label="Fisheye Home page"/>
+      <a href="http://127.0.0.1:5500/">
+      <img src="assets/images/logo.png" class="logo1" aria-label="Fisheye Home page"/>
+      </a>
     </header>
     <main id="main">
       <div class="photograph-header" id="photograph-header-id">
@@ -18,27 +20,36 @@
     </main>
     <div id="contact_modal">
 			<div class="modal">
-				<header>
+				<header class="header_modal">
+          <div>
           <h2>Contactez-moi</h2>
+          <p class="nameModal"></p>
+          </div>
+          <div class="close modal" aria-label="Close contact Form">
           <img src="assets/icons/close.svg" onclick="closeModal()" />
+         </div>
         </header>
 				<form>
 					<div>
-						<label>Prénom</label>
-						<input />
-            <label>Nom</label>
-						<input />
-            <label>Email</label>
-						<input />
-            <label>Votre Message</label>
-						<input />
+						<label for="First name">Prénom</label>
+						<input type="text" name="First name" id="First name" aria-label="First name"/>
+            <label for="Last name"></label> >Nom</label>
+						<input type="text" name="Last name" id="Last name" aria-label="Last name"/>
+            <label for="email"></label>>Email</label>
+						<input type="email" name="email" id="email" aria-label="Email"/>
+            <label for="Message">Votre Message</label>
+						<input type="text" name="text" id="text" aria-label="Your Message"/>
 					</div>
-          <button class="contact_button">Envoyer</button>
+          <button class="contact_button" type="text" name="send" aria-label="Send">Envoyer</button>
 				</form>
 			</div>
 		</div>
+    <footer id="footer">
+      <div class ="photograph-photos" id="photograph-footer-id"></div>
+    </footer>
     <script src="./scripts//factories/photographer.js"></script>
     <script src="./scripts/pages/photographer.js"></script>
+    <!-- <script src="./scripts/pages/index.js"></script> -->
     <script src="./scripts/utils/contactForm.js"></script>
   </body>
 </html>
