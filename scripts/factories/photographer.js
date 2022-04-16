@@ -7,7 +7,7 @@ function photographerFactory(data) {
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
         const aClick = document.createElement( 'a' );
-        aClick.setAttribute("href", "./photographer.html")
+        aClick.setAttribute("href", "./photographer.html?id=" + id)
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture)
         img.setAttribute("aria-label", name); 
@@ -20,6 +20,7 @@ function photographerFactory(data) {
         const tag = document.createElement( 'p' );
         tag.textContent = tagline;
         const prix = document.createElement( 'p' );
+        prix.setAttribute("class", "price_photographer")
         prix.textContent = price;
  
         article.appendChild(aClick);

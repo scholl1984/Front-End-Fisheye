@@ -1,25 +1,39 @@
+* {
+    box-sizing: border-box;
+  }
+
+
 #contact_modal {
     display: none;
 }
 
+#myLighbox {
+    display: none;
+}
+
+/* Header  */
+
+.logo1 {
+    height: 30px;
+    margin-left: 100px;
+}
+
+/* Main */
+
 .photograph-header {
     background-color: #FAFAFA;
-    height: 300px;
+    height: 250px;
     margin: 0 100px;
     display: flex;
     align-items: center;
     justify-content: space-around;
 }
 
-.logo1 {
-    height: 38px;
-    margin-left: 100px;
-}
-
 .photograph-header img {
-    height: 170px;
-    width: 170px;
+    height: 165px;
+    width: 165px;
     border-radius: 50%;
+    object-fit: cover;
 }
 
 h2 {
@@ -47,13 +61,21 @@ h2 {
     color: white;
     padding: 11px;
     width: 145px;
-    height: 59px;
+    height: 50px;
     border: none;
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
     margin-right: 41px;
 }
+
+/* Sort */
+
+#divSort {
+    margin: 10px 100px 0px 100px;
+}
+
+/* Section */
 
 .photograph-photos {
     display: grid;
@@ -72,6 +94,31 @@ footer video {
 height: 192px;
 width: 230px;
 }
+
+/* InfoBar */
+
+.infobar {
+    background-color: #DB8876;
+    height: 42px;
+    width: 200px;
+    display: flex;
+    position: fixed;
+    top: 967px;
+    right: 15px;
+    justify-content: space-around;
+}
+
+.price_Info {
+    margin-left: 12px;
+    margin-top: 4px;
+}
+
+.nbr_Likes {
+    margin-top: 4px;
+}
+
+/* Modal */
+
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
@@ -80,7 +127,7 @@ width: 230px;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 35px;
+    padding: 10px 35px 35px 35px;
     margin: auto;
 }
 
@@ -93,11 +140,25 @@ width: 230px;
     cursor: pointer;
 }
 
+
 .modal header h2 {
     font-size: 45px;
     font-weight: normal;
     text-align: center;
     color: black;
+    margin: 0px;
+}
+
+.nameModal {
+    font-size: 32px;
+    margin: 0px;
+}
+
+
+.close_modal {
+    padding: 0px;
+    margin: 0px;
+    margin-top: -57px;
 }
 
 form {
@@ -123,6 +184,13 @@ form div {
 form input {
     width: 100%;
     height: 68px;
+    border: none;
+    border-radius: 5px;
+}
+
+#text {
+    height: 130px;
+    width: 100%;
     border: none;
     border-radius: 5px;
 }
