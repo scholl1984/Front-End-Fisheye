@@ -3,7 +3,7 @@ function photographerFactory(data) {
 
     const picture = `assets/photographers/Sample Photos-3/Photographers ID Photos/${portrait}`;
     
-    console.log(picture)
+   
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
         const aClick = document.createElement( 'a' );

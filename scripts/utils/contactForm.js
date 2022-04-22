@@ -1,14 +1,13 @@
-
 // DOM
 const modalBtn = document.getElementsByClassName("contact_button");
 const btn = document.getElementsByClassName("contact_button");
 const contactBtn = document.getElementById("photograph-header-id");
-const displayImages = document.getElementById("photograph-footer-id");
-const divSort = document.getElementById("divSort");
+const displayImages = document.getElementById("photograph-section-id");
+const sortMenu = document.getElementById("sort__menu")
 
 //launch modal
 function modal () {
-btn.forEach((btn) => btn.addEventListener("click", displayModal()));
+btn.forEach((btn) => btn.addEventListener("click", displayModal));
 }
 
 //launch modal form
@@ -17,8 +16,9 @@ function displayModal() {
 	  modal.style.display = "block";
     contactBtn.style.display = "none";
     displayImages.style.display = "none";
-    divSort.style.display = "none";
-    
+    document.querySelector(".infobar").style.display = "none";
+    LogoPhotographerPage.style.display = "none";
+    sortMenu.style.display = "none";
 }
 
 function closeModal() {
@@ -26,8 +26,12 @@ function closeModal() {
     modal.style.display = "none";
     contactBtn.style.display = "flex";
     displayImages.style.display = "grid";
+    LogoPhotographerPage.style.display = "flex";
+    sortMenu.style.display = "block";
+    document.querySelector(".infobar").style.display = "flex";
 }
 
+//param modal
 async function displayDataOuiOui(data) {
     const firstName = document.getElementById("First name").value;
     const lastName = document.getElementById("Last name").value;
@@ -64,27 +68,3 @@ async function init() {
 
 init();
     
-
-// async function displayDataOuiOui(data) {
-//     const { name } = data;
-    
-    
-    
-   
-
-// }
-
-// async function init() {
-//     fetch('../data/photographers.json')
-// .then(response => {
-//     return response.json();
-//   }).then(jsondata => {
-//     displayDataOui(jsondata)
-    
-//   }).catch(err => {
-//     // Do something for an error here
-//   });
-   
-// };
-
-// init();

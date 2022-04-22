@@ -23,6 +23,3 @@ async function init() {
 };
 
 init();
-
-// let logo = document.querySelector(".logo")
-// logo.addEventListener("click", )

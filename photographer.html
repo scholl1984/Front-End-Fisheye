@@ -10,7 +10,7 @@
   <body>
     <header>
       <a href="http://127.0.0.1:5500/">
-      <img src="assets/images/logo.png" class="logo1" aria-label="Fisheye Home page"/>
+      <img src="assets/images/logo.png" id="logo1" aria-label="Fisheye Home page"/>
       </a>
     </header>
     <main id="main">
@@ -18,15 +18,6 @@
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
       </div>
     </main>
-    <div id="divSort">
-      <label>Trier par
-        <input list="sort" name="sort" /></label>
-        <datalist id="sort">
-          <option value="Chrome">
-          <option value="Firefox">
-          <option value="Internet Explorer">
-        </datalist>
-    </div>
     <div id="contact_modal" >
 			<div class="modal" aria-labelledby="">
 				<header class="header_modal">
@@ -57,16 +48,23 @@
 				</form>
 			</div>
 		</div>
-    <div id="myLightbox" class="myLightbox">
-      <span class="close cursor" onclick="closeLighbox()">&times;</span>
-      <div id="lightBox-content">
-        <p>eeee</p>
+    <div id="sort__menu">
+      <div class="sort__p">
+        <p>Trier par</p>
+      </div>
+      <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+        <div id="myDropdown" class="dropdown-content">
+          <a href="#">Popularité</a>
+          <a href="#">Date</a>
+          <a href="#">Titre</a>
+       </div>
       </div>
     </div>
-    <footer id="footer">
-      <div class ="photograph-photos" id="photograph-footer-id"></div>
-      <div class="infobar"></div>
-    </footer>
+    <section id="section">
+      <div class="photograph-photos" id="photograph-section-id"></div>
+    </section>
+    <div class="infobar"></div>
     <script src="./scripts//factories/photographer.js"></script>
     <script src="./scripts/pages/photographer.js"></script>
     <!-- <script src="./scripts/pages/index.js"></script> -->
