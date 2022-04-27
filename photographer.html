@@ -55,9 +55,9 @@
       <div class="dropdown">
         <button onclick="myFunction()" class="dropbtn">Dropdown</button>
         <div id="myDropdown" class="dropdown-content">
-          <a href="#" id="sort-popular">Popularité</a>
-          <a href="#" id="sort-date">Date</a>
-          <a href="#" id="sort-title">Titre</a>
+          <button id="sort-popular">Popularité</button>
+          <button id="sort-date">Date</button>
+          <button id="sort-title">Titre</button>
        </div>
       </div>
     </div>
@@ -65,6 +65,18 @@
       <div class="photograph-photos" id="photograph-section-id"></div>
     </section>
     <div class="infobar"></div>
+    
+      
+      <div class="carousel">
+        <span class="close cursor" onclick="closeCarousel()">&times;</span>
+        <div class="slideshow-container">
+           <div class="mySlides"></div>
+         </div>
+        <div class="direction prev" tabindex="0" onclick="plusSlides(-1)" role="button">❮</div>
+         <div class="direction next" tabindex="0" onclick="plusSlides(1)" role="button">❯</div>
+      </div>
+      
+     </div>
     <script src="./scripts//factories/photographer.js"></script>
     <script src="./scripts/pages/photographer.js"></script>
     <!-- <script src="./scripts/pages/index.js"></script> -->
