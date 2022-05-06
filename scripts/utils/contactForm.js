@@ -6,14 +6,14 @@ const displayImages = document.getElementById("photograph-section-id");
 const sortMenu = document.getElementById("sort__menu")
 
 //launch modal
-function modal () {
-btn.forEach((btn) => btn.addEventListener("click", displayModal));
+function modal() {
+    btn.forEach((btn) => btn.addEventListener("click", displayModal));
 }
 
 //launch modal form
 function displayModal() {
     const modal = document.getElementById("contact_modal");
-	  modal.style.display = "block";
+    modal.style.display = "block";
     contactBtn.style.display = "none";
     displayImages.style.display = "none";
     document.querySelector(".infobar").style.display = "none";
@@ -37,34 +37,37 @@ async function displayDataOuiOui(data) {
     const lastName = document.getElementById("Last name").value;
     const email = document.getElementById("email").value;
     const text = document.getElementById("text").value;
-    
+
     let button = document.querySelector(".contact_send");
     button.disabled = true;
-    
+
     let params = (new URL(window.location)).searchParams;
     let id = params.get("id")
-    let photographName = data.photographers.filter((photographer)=>{return photographer.id.toString() === id});
-    const { name } = photographName[0];
+    let photographName = data.photographers.filter((photographer) => {
+        return photographer.id.toString() === id
+    });
+    const {
+        name
+    } = photographName[0];
     const headerModal = document.querySelector(".header_modal");
     const pModal = document.querySelector(".nameModal");
     pModal.innerHTML = name;
 
-   console.log(firstName,lastName,email,text)
-    
+    console.log(firstName, lastName, email, text)
+
 }
 
 async function init() {
     fetch('../data/photographers.json')
-.then(response => {
-    return response.json();
-  }).then(jsondata => {
-    displayDataOuiOui(jsondata)
-    
-  }).catch(err => {
-    // Do something for an error here
-  });
-   
+        .then(response => {
+            return response.json();
+        }).then(jsondata => {
+            displayDataOuiOui(jsondata)
+
+        }).catch(err => {
+            // Do something for an error here
+        });
+
 };
 
 init();
-    

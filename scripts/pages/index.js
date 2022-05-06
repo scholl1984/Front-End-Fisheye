@@ -1,5 +1,5 @@
 async function displayData(data) {
-    console.log(data)
+    
     const photographersSection = document.querySelector(".photographer_section");
 
     data.photographers.forEach((photographer) => {
