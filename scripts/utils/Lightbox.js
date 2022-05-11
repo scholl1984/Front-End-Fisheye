@@ -11,13 +11,17 @@ const TrierMenu = document.getElementById("sort__menu")
 // Open the carousel
 
 function openCarousel(index) {
+  
     Carousel.style.display = "block";
     LinkOnPhoto.style.display = "none";
     LogoPhotographerPage.style.display = "none";
     infoBar.style.display = "none";
     PhotographHeader.style.display = "none";
     TrierMenu.style.display = "none";
+    
     showSlides(index+1)
+    console.log(index+1)
+    
 }
 
 // Close the carousel
@@ -48,6 +52,8 @@ async function displayDataLightbox(data) {
         likes
     }] = photographerMedia;
 
+    
+
     let photographerProfilInfo = data.photographers.filter((photographer) => {
         return photographer.id.toString() === id
     });
@@ -61,8 +67,8 @@ async function displayDataLightbox(data) {
     const [first, last] = name.split(' ');
 
 
-    photographerMedia.map((media) => {
-
+    photographerMedia.map((media, index) => {
+          
         let lighBoxContent = document.querySelector(".slideshow-container")
       
         if (media.image) {
@@ -74,7 +80,6 @@ async function displayDataLightbox(data) {
             photoLightBox.style.height = "300px";
             divSlide.append(photoLightBox)
             lighBoxContent.append(divSlide)
-            
 
 
         } else if (media.video) {
@@ -88,14 +93,11 @@ async function displayDataLightbox(data) {
             divSlide.append(videoLightBox)
             lighBoxContent.append(divSlide)
         }
-console.log("coucou")
+        
     });
-
-
    
 }
 
- // Lightbox //
 
 let slideIndex = 1;
 // showSlides(slideIndex);
@@ -106,41 +108,48 @@ function plusSlides(n) {
 }
 // Thumbnail image controls
 function currentSlide(n) {
-    showSlides(slideIndex = n);
+  showSlides(slideIndex = n);
+ 
 }
 
 function showSlides(n) {
-  console.log(slideIndex)
-    let i;
-    if (document.querySelector(".carousel")) {
-      
-        let slideshowPage = document.querySelector(".carousel");
-        if (slideshowPage.classList.contains("carousel")) {
-            let slides = slideshowPage.querySelectorAll(".mySlides");
-            console.log(slides)
-            if (n > slides.length) {
-                slideIndex = 1
-            };
-            if (n < 1) {
-                slideIndex = slides.length
-            };
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            };
-            console.log(slideIndex - 1, slides)
-            slides[slideIndex - 1].style.display = "block";
-        }
-    }
-}
-
+     
+      let i;
+      if (document.querySelector(".carousel")) {
+  
+          let slideshowPage = document.querySelector(".carousel");
+          if (slideshowPage.classList.contains("carousel")) {
+              let slides = slideshowPage.querySelectorAll(".mySlides");
+              
+              if (n > slides.length) {
+              slideIndex = 1
+                  
+              };
+              if (n < 1) {
+              slideIndex = slides.length
+                  
+              };
+              for (i = 0; i < slides.length; i++) {
+                  slides[i].style.display = "none";
+              };
+              slides[slideIndex - 1].style.display = "block";
+          };
+          
+            
+          }
+      }
+  
+  
+    
 
 async function init() {
+
     fetch('../data/photographers.json')
         .then(response => {
             return response.json();
         }).then(jsondata => {
             displayDataLightbox(jsondata)
-            showSlides(jsondata)
+            //showSlides(jsondata.length)
         }).catch(err => {
             // Do something for an error here
         });

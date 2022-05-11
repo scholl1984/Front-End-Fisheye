@@ -53,11 +53,11 @@
         <p>Trier par</p>
       </div>
       <div class="dropdown">
-        <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+        <button onclick="showDropdown()" class="dropbtn">Dropdown</button>
         <div id="myDropdown" class="dropdown-content">
-          <button id="sort-popular">Popularité</button>
-          <button id="sort-date">Date</button>
-          <button id="sort-title">Titre</button>
+          <button id="sort-popular" onclick="filterMediasByLikes()">Popularité</button>
+          <button id="sort-date" onclick="filterMediasByDate()">Date</button>
+          <button id="sort-title" onclick="filterMediasByTitle()">Titre</button>
        </div>
       </div>
     </div>
