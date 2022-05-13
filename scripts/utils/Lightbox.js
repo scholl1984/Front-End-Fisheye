@@ -6,12 +6,11 @@ const infoBar = document.querySelector(".infobar")
 const closeCursor = document.querySelector(".close_cursor")
 const PhotographHeader = document.getElementById("photograph-header-id");
 const TrierMenu = document.getElementById("sort__menu")
-
+let slideIndex
 
 // Open the carousel
 
 function openCarousel(index) {
-  
     Carousel.style.display = "block";
     LinkOnPhoto.style.display = "none";
     LogoPhotographerPage.style.display = "none";
@@ -19,8 +18,8 @@ function openCarousel(index) {
     PhotographHeader.style.display = "none";
     TrierMenu.style.display = "none";
     
-    showSlides(index+1)
-    console.log(index+1)
+    showSlides(index)
+    console.log(index)
     
 }
 
@@ -68,7 +67,7 @@ async function displayDataLightbox(data) {
 
 
     photographerMedia.map((media, index) => {
-          
+        console.log({media, index})
         let lighBoxContent = document.querySelector(".slideshow-container")
       
         if (media.image) {
@@ -97,46 +96,39 @@ async function displayDataLightbox(data) {
     });
    
 }
-
-
-let slideIndex = 1;
-// showSlides(slideIndex);
-
-// Next/previous controls
-function plusSlides(n) {
-    showSlides(slideIndex += n);
-}
-// Thumbnail image controls
-function currentSlide(n) {
-  showSlides(slideIndex = n);
- 
-}
+//CARROUSSEL
+document.getElementById('next-button').addEventListener("click", function() {
+    let slideshowPage = document.querySelector(".carousel");
+    let slides = slideshowPage.querySelectorAll(".mySlides");
+    if(slideIndex  === slides.length - 1) slideIndex = 0
+    else slideIndex = slideIndex  + 1;
+    showSlides(slideIndex);
+ });
+ document.getElementById('prev-button').addEventListener("click", function() {
+    let slideshowPage = document.querySelector(".carousel");
+    let slides = slideshowPage.querySelectorAll(".mySlides");
+    if (slideIndex  === 0) slideIndex = slides.length - 1
+    else slideIndex = slideIndex - 1;
+    showSlides(slideIndex);
+ });
 
 function showSlides(n) {
-     
       let i;
+      slideIndex = n
       if (document.querySelector(".carousel")) {
-  
           let slideshowPage = document.querySelector(".carousel");
           if (slideshowPage.classList.contains("carousel")) {
               let slides = slideshowPage.querySelectorAll(".mySlides");
-              
-              if (n > slides.length) {
-              slideIndex = 1
-                  
+             for (i = 0; i < slides.length; i++) {
+                  console.log({slideIndex})
+                  if(i === slideIndex){
+                    slides[i].style.display = "block";
+                  }else {
+                    slides[i].style.display = "none";
+                  }
               };
-              if (n < 1) {
-              slideIndex = slides.length
-                  
-              };
-              for (i = 0; i < slides.length; i++) {
-                  slides[i].style.display = "none";
-              };
-              slides[slideIndex - 1].style.display = "block";
-          };
-          
-            
-          }
+          }; 
+        }
       }
   
   

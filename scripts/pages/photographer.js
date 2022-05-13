@@ -4,6 +4,9 @@ let id = params.get("id");
 let photographerMedia = [];
 let defaultCase = 'Title';
 let Name;
+let Price;
+let mediaId;
+// let MediaLikes;
 
 //show dropdown menu
 function showDropdown() {
@@ -25,68 +28,66 @@ window.onclick = function(event) {
 
 // Sort Menu
 
-function trieTitle(x,y){
+function trieTitle(x, y) {
     if (x.title < y.title) return -1;
     if (x.title > y.title) return 1;
     return 0;
 }
 
-function trieDate(x,y){
+function trieDate(x, y) {
     if (x.date < y.date) return -1;
     if (x.date > y.date) return 1;
     return 0;
 }
 
-function trieLikes(x,y){
-   if (x.likes < y.likes) return -1;
-   if (x.likes > y.likes) return 1;
-     return 0
+function trieLikes(x, y) {
+    if (x.likes < y.likes) return -1;
+    if (x.likes > y.likes) return 1;
+    return 0
 }
 
-function filterMediasByTitle(){
+function filterMediasByTitle() {
     defaultCase = 'Title';
-    console.log("bonjour")
     sortPhotographerMedias(defaultCase);
 }
 
-function filterMediasByLikes(){
+function filterMediasByLikes() {
     defaultCase = 'Likes'
     sortPhotographerMedias(defaultCase);
 }
 
-function filterMediasByDate(){
+function filterMediasByDate() {
     defaultCase = 'Date';
     sortPhotographerMedias(defaultCase);
-    }
+}
 
-function sortPhotographerMedias(defaultCase){
-    
+function sortPhotographerMedias(defaultCase) {
+
     switch (defaultCase) {
-      case 'Title':
-        photographerMedia.sort(trieTitle);
-        break;
-      case 'Likes':
-        photographerMedia.sort(trieLikes);
-          break;
-      case 'Date':
-        photographerMedia.sort(trieDate);
-        break;
-      
+        case 'Title':
+            photographerMedia.sort(trieTitle);
+            break;
+        case 'Likes':
+            photographerMedia.sort(trieLikes);
+            break;
+        case 'Date':
+            photographerMedia.sort(trieDate);
+            break;
+
     }
-    renderPhotographerMedia ()
+    renderPhotographerMedia()
 }
 
 // Media Photograph 
 
 async function displayDataOui(data) {
-    
+
     // Info Media
     photographerMedia = data.media.filter((media) => {
         return media.photographerId.toString() === id
     });
-    
-    
-    //console.log({filterMedias})
+
+
     const [{
         photographerId,
         title,
@@ -106,7 +107,10 @@ async function displayDataOui(data) {
         price
     } = photographerProfilInfo[0];
 
-    Name = name 
+
+    Price = price;
+    Name = name;
+
     // Header Photograph
 
     const headerPhotograph = document.querySelector(".photograph-header")
@@ -120,55 +124,41 @@ async function displayDataOui(data) {
 
 
     headerPhotograph.innerHTML = DivHeaderPhotograph;
-
-        // InfoMenu 
-
-        // let sum = photographerMedia.reduce((acc, media) => {
-        //     return acc += media.likes
-        // }, 0);
-
-        // let infoBar = `<div id="nbrTotal_Likes">${sum}</div><div class="price_Info">${price}</div>`
-        // document.querySelector(".infobar").innerHTML = infoBar;
-
-        // document.getElementById(`like-${media.id})`).addEventListener("click", function() {
-        //     media.likes++;
-        //     document.getElementById(`like-${media.id})`).disabled = true
-        //     sum = photographerMedia.reduce((acc, media) => {
-        //         return acc += media.likes
-        //     }, 0);
-
-        //     document.getElementById("nbrTotal_Likes").textContent = sum;
-        //     document.getElementById(`like-${media.id})`).innerHTML = media.likes + "" + "&#9829;";
-        // })
     
-        renderPhotographerMedia ()  
+    renderPhotographerMedia()
+
 }
 
-function renderPhotographerMedia () {
+// InfoMenu 
+
+
+function renderPhotographerMedia() {
     const section = document.getElementById("photograph-section-id");
     section.innerHTML = "";
 
     photographerMedia.map((media, index) => {
 
         const [first, last] = Name.split(' ');
-        
+
         const linkPictureofthephotograph = document.createElement('a');
         const pictureofthephotograph = document.createElement('img');
         const titleofthephotograph = document.createElement('div');
         const titleofthephoto = document.createElement('div');
         const nbrLikes = document.createElement('button');
-
+        mediaId = media.id
+        
         if (media.image) {
             pictureofthephotograph.setAttribute("src", `assets/photographers/Sample Photos-3/${first}/${media.image}`);
             pictureofthephotograph.setAttribute("class", "photophotograph");
             pictureofthephotograph.setAttribute("onclick", `openCarousel(${photographerMedia.indexOf(media)})`);
-            
+
 
             titleofthephotograph.setAttribute("class", "title_photo");
             titleofthephoto.setAttribute("class", "title");
 
             nbrLikes.setAttribute("class", "nbr_likes");
-            nbrLikes.setAttribute("id", `like-${media.id})`);
+            nbrLikes.setAttribute("id", `like-${mediaId})`);
+
             nbrLikes.innerHTML = media.likes + "" + "&#9829;";
 
             titleofthephotograph.append(titleofthephoto, nbrLikes)
@@ -190,7 +180,7 @@ function renderPhotographerMedia () {
             titleofthevideo.setAttribute("class", "title");
 
             nbrLikes.setAttribute("class", "nbr_likes");
-            nbrLikes.setAttribute("id", `like-${media.id})`);
+            nbrLikes.setAttribute("id", `like-${mediaId})`);
             nbrLikes.innerHTML = media.likes + "" + "&#9829;";
 
             titleofthephotograph1.append(titleofthevideo, nbrLikes)
@@ -204,9 +194,28 @@ function renderPhotographerMedia () {
             section.append(linkVideoofthephotograph)
             linkVideoofthephotograph.append(videophotograph, titleofthephotograph1);
 
-        }  
+        }
+        let sum = photographerMedia.reduce((acc, media) => {
+            return acc += media.likes
+        }, 0);
+
+        let infoBar = `<div id="nbrTotal_Likes">${sum}</div><div class="price_Info">${media.price}</div>`
+        document.querySelector(".infobar").innerHTML = infoBar;
+
+        document.getElementById(`like-${media.id})`).addEventListener("click", function() {
+            media.likes++;
+            document.getElementById(`like-${media.id})`).disabled = true
+            sum = photographerMedia.reduce((acc, media) => {
+                return acc += media.likes
+            }, 0);
+
+            document.getElementById("nbrTotal_Likes").textContent = sum;
+            document.getElementById(`like-${media.id})`).innerHTML = media.likes + "" + "&#9829;";
+        })
     })
-}    
+
+}
+
 // console.log(PhotographMedia)
 // Function init
 
