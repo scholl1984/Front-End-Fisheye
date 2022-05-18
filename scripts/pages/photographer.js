@@ -6,7 +6,6 @@ let defaultCase = 'Title';
 let Name;
 let Price;
 let mediaId;
-// let MediaLikes;
 
 //show dropdown menu
 function showDropdown() {
@@ -14,7 +13,7 @@ function showDropdown() {
 }
 
 window.onclick = function(event) {
-    if (!event.target.matches('.dropbtn')) {
+    if (!event.target.matches('.dropbtn') && !event.target.matches('.arrow-down') && !event.target.matches('.p_catégories')) {
         var dropdowns = document.getElementsByClassName("dropdown-content");
         var i;
         for (i = 0; i < dropdowns.length; i++) {
@@ -115,12 +114,13 @@ async function displayDataOui(data) {
 
     const headerPhotograph = document.querySelector(".photograph-header")
     const picture = `assets/photographers/Sample Photos-3/Photographers ID Photos/${portrait}`;
-    let DivHeaderPhotograph = `<div class="div1"><h2>${photographerProfilInfo[0].name}</h2>
-                                              <h6>${city}</h6>
-                                              <p>${tagline}</p>
-                              </div>
+    let DivHeaderPhotograph = `<div class="div1">
+                                            <h1 class"Name_Photograph">${photographerProfilInfo[0].name}</h1>
+                                            <p id="city_Photograph">${city}<p>
+                                            <p id="tag_Photograph">${tagline}</p>
+                                </div>
                           <div class="div2"><button class="contact_button" onclick="displayModal()" aria-label="contact me">Contactez-moi</button></div>
-                          <div class="div3"><img src="${picture}" aria-label="${name}" class="img_photographer"></div>`
+                          <div class="div3"><img src="${picture}" "alt", "portrait-of-the-photographer" aria-label="${name}" class="img_photographer"></div>`
 
 
     headerPhotograph.innerHTML = DivHeaderPhotograph;
@@ -151,13 +151,14 @@ function renderPhotographerMedia() {
             pictureofthephotograph.setAttribute("src", `assets/photographers/Sample Photos-3/${first}/${media.image}`);
             pictureofthephotograph.setAttribute("class", "photophotograph");
             pictureofthephotograph.setAttribute("onclick", `openCarousel(${photographerMedia.indexOf(media)})`);
-
+            pictureofthephotograph.style.width= "320px"
+            pictureofthephotograph.style.height= "300px"
 
             titleofthephotograph.setAttribute("class", "title_photo");
             titleofthephoto.setAttribute("class", "title");
 
             nbrLikes.setAttribute("class", "nbr_likes");
-            nbrLikes.setAttribute("id", `like-${mediaId})`);
+            nbrLikes.setAttribute("id", `like-${media.id})`);
 
             nbrLikes.innerHTML = media.likes + "" + "&#9829;";
 
@@ -180,7 +181,8 @@ function renderPhotographerMedia() {
             titleofthevideo.setAttribute("class", "title");
 
             nbrLikes.setAttribute("class", "nbr_likes");
-            nbrLikes.setAttribute("id", `like-${mediaId})`);
+            nbrLikes.setAttribute("id", `like-${media.id})`);
+
             nbrLikes.innerHTML = media.likes + "" + "&#9829;";
 
             titleofthephotograph1.append(titleofthevideo, nbrLikes)
@@ -189,7 +191,9 @@ function renderPhotographerMedia() {
             videophotograph.setAttribute("src", `assets/photographers/Sample Photos-3/${first}/${media.video}`);
             videophotograph.setAttribute("type", "video/mp4")
             videophotograph.setAttribute("class", "photophotograph");
-            linkVideoofthephotograph.setAttribute("onclick", "openCarousel()");
+            videophotograph.setAttribute("onclick", `openCarousel(${photographerMedia.indexOf(media)})`);
+            videophotograph.style.width= "320px"
+            videophotograph.style.height= "300px"
 
             section.append(linkVideoofthephotograph)
             linkVideoofthephotograph.append(videophotograph, titleofthephotograph1);
@@ -199,7 +203,7 @@ function renderPhotographerMedia() {
             return acc += media.likes
         }, 0);
 
-        let infoBar = `<div id="nbrTotal_Likes">${sum}</div><div class="price_Info">${media.price}</div>`
+        let infoBar = `<div id="nbrTotal_Likes">${sum} &#9829</div><div class="price_Info">${Price}</div>`
         document.querySelector(".infobar").innerHTML = infoBar;
 
         document.getElementById(`like-${media.id})`).addEventListener("click", function() {
@@ -209,14 +213,13 @@ function renderPhotographerMedia() {
                 return acc += media.likes
             }, 0);
 
-            document.getElementById("nbrTotal_Likes").textContent = sum;
+            document.getElementById("nbrTotal_Likes").innerHTML = sum + "" + "&#9829";
             document.getElementById(`like-${media.id})`).innerHTML = media.likes + "" + "&#9829;";
         })
     })
 
 }
 
-// console.log(PhotographMedia)
 // Function init
 
 async function init() {

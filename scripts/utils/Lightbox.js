@@ -67,16 +67,18 @@ async function displayDataLightbox(data) {
 
 
     photographerMedia.map((media, index) => {
-        console.log({media, index})
+        // console.log({media, index})
         let lighBoxContent = document.querySelector(".slideshow-container")
       
         if (media.image) {
             const photoLightBox = document.createElement("img");
-            const divSlide = document.createElement('div')          
+            const divSlide = document.createElement('div')  
+            const titleSlide = document.createElement('p') 
+            titleSlide.setAttribute("class", "title_lightbox")
+            titleSlide.innerHTML = media.title ;   
             divSlide.setAttribute("class", "mySlides")
             photoLightBox.setAttribute("src", `assets/photographers/Sample Photos-3/${first}/${media.image}`);
-            photoLightBox.style.width = "300px";
-            photoLightBox.style.height = "300px";
+            divSlide.append(titleSlide)
             divSlide.append(photoLightBox)
             lighBoxContent.append(divSlide)
 
@@ -84,11 +86,14 @@ async function displayDataLightbox(data) {
         } else if (media.video) {
             const videoLightBox = document.createElement("video");
             const divSlide = document.createElement('div')
+            const titleSlideVideo = document.createElement('p') 
             divSlide.setAttribute("class", "mySlides")
+            titleSlideVideo.setAttribute("class", "title_lightbox")
+            titleSlideVideo.innerHTML = media.title ; 
+            divSlide.append(titleSlideVideo)
             videoLightBox.setAttribute("src", `assets/photographers/Sample Photos-3/${first}/${media.video}`);
             videoLightBox.setAttribute("type", "video/mp4")
-            videoLightBox.style.width = "300px";
-            videoLightBox.style.width = "300px";
+            
             divSlide.append(videoLightBox)
             lighBoxContent.append(divSlide)
         }
@@ -120,7 +125,7 @@ function showSlides(n) {
           if (slideshowPage.classList.contains("carousel")) {
               let slides = slideshowPage.querySelectorAll(".mySlides");
              for (i = 0; i < slides.length; i++) {
-                  console.log({slideIndex})
+                //   console.log({slideIndex})
                   if(i === slideIndex){
                     slides[i].style.display = "block";
                   }else {

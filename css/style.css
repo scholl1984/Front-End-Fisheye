@@ -1,83 +1,89 @@
 @import url("photographer.css");
 
 * {
-    box-sizing: border-box;
-  }
-
+	box-sizing: border-box;
+}
 
 body {
-    font-family: "DM Sans", sans-serif;
-    margin: 0;
+	font-family: "DM Sans", sans-serif;
+	margin: 0;
 }
 
 header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    height: 133px;
-    position: relative;
-    
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	height: 100px;
+	position: relative;
+
 }
 
 header h1 {
-    color: #901C1C;
-    margin-right: 55px;
-    font-size: 30px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 47px;
-    letter-spacing: 0em;
-    text-align: left;
+	color: #901C1C;
+	margin-right: 55px;
+	font-size: 30px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 47px;
+	letter-spacing: 0em;
+	text-align: left;
 }
 
 .logo {
-    height: 30px;
-    margin-left: 70px;
+	height: 30px;
+	margin-left: 70px;
 }
 
 .photographer_section {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 55px;
-    margin-top: 10px;
-    text-align: center;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 55px;
+	margin-top: 10px;
+	text-align: center;
 }
 
 .photographer_section article {
-    justify-self: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+	justify-self: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 }
 
 .photographer_section article a {
-    color: #D3573C;
-    font-size: 23px;
-    margin: 10px 0px 0px 0px;
-    text-decoration: none;
+	color: #D3573C;
+	font-size: 23px;
+	margin: 10px 0px 0px 0px;
+	text-decoration: none;
 }
 
 .photographer_section article h6 {
-    color: #901C1C;
-    font-size: 13px;
-    margin: 2px;
+	color: #901C1C;
+	font-size: 13px;
+	margin: 2px;
 }
 
-.photographer_section article p {
-    color: black;
-    margin: 2px;
-    font-size: 10px; 
+.p-cityPhotographer {
+	color: #901C1C;
+	font-size: 13px;
+	margin: 2px;
 }
 
-.photographer_section article .price_photographer {
-    font-size: 9px;
-    color: #757575;
+.p-logLine {
+	color: black;
+	margin: 2px;
+	font-size: 10px;
+}
+
+.price_photographer {
+	font-size: 9px;
+	color: #757575;
+	margin-top: 2px;
 }
 
 .photographer_section article img {
-    height: 160px;
-    width: 160px;
-    object-fit: cover;
+	height: 160px;
+	width: 160px;
+	object-fit: cover;
 }

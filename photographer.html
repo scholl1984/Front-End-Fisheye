@@ -10,7 +10,7 @@
   <body>
     <header>
       <a href="http://127.0.0.1:5500/">
-      <img src="assets/images/logo.png" id="logo1" aria-label="Fisheye Home page"/>
+      <img src="assets/images/logo.png" id="logo1" aria-label="Fisheye Home page" alt="Fisheye Logo"/>
       </a>
     </header>
     <main id="main">
@@ -30,7 +30,7 @@
             </div>
           </div>
           <div class="close_modal" aria-label="Close contact Form">
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <img src="assets/icons/close.svg" onclick="closeModal()" alt="Close"/>
          </div>
         </header>
 				<form>
@@ -41,7 +41,7 @@
 						<input type="text" name="Last name" id="Last name" aria-label="Last name"/>
             <label for="email">Mail</label>
 						<input type="text" name="email" id="email" aria-label="email"/>
-            <label for="Message">Votre Message</label>
+            <label for="text">Votre Message</label>
 						<input type="text" name="text" id="text" aria-label="Your Message"/>
 					</div>
           <button class="contact_send" type="text" name="send" aria-label="Send">Envoyer</button>
@@ -53,9 +53,16 @@
         <p>Trier par</p>
       </div>
       <div class="dropdown">
-        <button onclick="showDropdown()" class="dropbtn">Dropdown</button>
+        <div class="trier_par">
+        <button onclick="showDropdown()" class="dropbtn">
+          <p class="p_catégories"> Catégories</p><p class="arrow-down">&#8964</p>
+        </button>
+        
+        </div>
         <div id="myDropdown" class="dropdown-content">
-          <button id="sort-popular" onclick="filterMediasByLikes()">Popularité</button>
+          <button id="sort-popular" onclick="filterMediasByLikes()">
+            <p>Popularité</p><p>&#8963</p>
+          </button>
           <button id="sort-date" onclick="filterMediasByDate()">Date</button>
           <button id="sort-title" onclick="filterMediasByTitle()">Titre</button>
        </div>
@@ -68,7 +75,7 @@
     
       
       <div class="carousel">
-        <span class="close cursor" onclick="closeCarousel()">&times;</span>
+        <span class="close-cursor" onclick="closeCarousel()">&times;</span>
         <div class="slideshow-container"> 
         </div>
         <div class="direction prev" id='prev-button' tabindex="0"  role="button">❮</div>
