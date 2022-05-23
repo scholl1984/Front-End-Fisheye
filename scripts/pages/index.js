@@ -8,7 +8,7 @@ async function displayData(data) {
         photographersSection.appendChild(userCardDOM);
         
     });
-};
+}
 
 async function init() {
     fetch('../data/photographers.json')
@@ -20,6 +20,6 @@ async function init() {
     // Do something for an error here
   });
    
-};
+}
 
 init();

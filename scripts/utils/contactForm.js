@@ -1,9 +1,9 @@
 // DOM
-const modalBtn = document.getElementsByClassName("contact_button");
 const btn = document.getElementsByClassName("contact_button");
 const contactBtn = document.getElementById("photograph-header-id");
 const displayImages = document.getElementById("photograph-section-id");
 const sortMenu = document.getElementById("sort__menu")
+
 
 //launch modal
 function modal() {
@@ -49,7 +49,6 @@ async function displayDataOuiOui(data) {
     const {
         name
     } = photographName[0];
-    const headerModal = document.querySelector(".header_modal");
     const pModal = document.querySelector(".nameModal");
     pModal.innerHTML = name;
 
@@ -63,11 +62,10 @@ async function init() {
             return response.json();
         }).then(jsondata => {
             displayDataOuiOui(jsondata)
-
         }).catch(err => {
             // Do something for an error here
         });
 
-};
+}
 
 init();

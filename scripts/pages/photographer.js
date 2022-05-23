@@ -5,7 +5,6 @@ let photographerMedia = [];
 let defaultCase = 'Title';
 let Name;
 let Price;
-let mediaId;
 
 //show dropdown menu
 function showDropdown() {
@@ -86,14 +85,6 @@ async function displayDataOui(data) {
         return media.photographerId.toString() === id
     });
 
-
-    const [{
-        photographerId,
-        title,
-        likes
-    }] = photographerMedia;
-
-
     // Info Photograph
     let photographerProfilInfo = data.photographers.filter((photographer) => {
         return photographer.id.toString() === id
@@ -136,16 +127,15 @@ function renderPhotographerMedia() {
     const section = document.getElementById("photograph-section-id");
     section.innerHTML = "";
 
-    photographerMedia.map((media, index) => {
+    photographerMedia.map((media) => {
 
-        const [first, last] = Name.split(' ');
+        const [first] = Name.split(' ');
 
         const linkPictureofthephotograph = document.createElement('a');
         const pictureofthephotograph = document.createElement('img');
         const titleofthephotograph = document.createElement('div');
         const titleofthephoto = document.createElement('div');
         const nbrLikes = document.createElement('button');
-        mediaId = media.id
         
         if (media.image) {
             pictureofthephotograph.setAttribute("src", `assets/photographers/Sample Photos-3/${first}/${media.image}`);
@@ -199,6 +189,8 @@ function renderPhotographerMedia() {
             linkVideoofthephotograph.append(videophotograph, titleofthephotograph1);
 
         }
+
+        
         let sum = photographerMedia.reduce((acc, media) => {
             return acc += media.likes
         }, 0);
@@ -231,6 +223,6 @@ async function init() {
         }).catch(err => {
             // Do something for an error here
         });
-};
+}
 
 init();

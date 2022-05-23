@@ -17,9 +17,7 @@ function openCarousel(index) {
     infoBar.style.display = "none";
     PhotographHeader.style.display = "none";
     TrierMenu.style.display = "none";
-    
     showSlides(index)
-    console.log(index)
     
 }
 
@@ -45,12 +43,6 @@ async function displayDataLightbox(data) {
     let photographerMedia = data.media.filter((media) => {
         return media.photographerId.toString() === id
     });
-    const [{
-        photographerId,
-        title,
-        likes
-    }] = photographerMedia;
-
     
 
     let photographerProfilInfo = data.photographers.filter((photographer) => {
@@ -58,17 +50,20 @@ async function displayDataLightbox(data) {
     });
     const {
         name,
-        portrait,
-        city,
-        tagline,
-        price
     } = photographerProfilInfo[0];
-    const [first, last] = name.split(' ');
 
+    renderLightbox (name, photographerMedia) 
+}
 
-    photographerMedia.map((media, index) => {
-        // console.log({media, index})
-        let lighBoxContent = document.querySelector(".slideshow-container")
+function renderLightbox (name, photographerMedia) {
+    
+let lighBoxContent = document.querySelector(".slideshow-container")
+lighBoxContent.innerHTML = "";
+const [first] = name.split(' ');
+console.log(photographerMedia)
+
+    photographerMedia.map((media) => {
+        
       
         if (media.image) {
             const photoLightBox = document.createElement("img");
@@ -99,8 +94,9 @@ async function displayDataLightbox(data) {
         }
         
     });
-   
+
 }
+
 //CARROUSSEL
 document.getElementById('next-button').addEventListener("click", function() {
     let slideshowPage = document.querySelector(".carousel");
@@ -131,13 +127,10 @@ function showSlides(n) {
                   }else {
                     slides[i].style.display = "none";
                   }
-              };
-          }; 
+              }
+          } 
         }
-      }
-  
-  
-    
+      }   
 
 async function init() {
 
@@ -151,6 +144,6 @@ async function init() {
             // Do something for an error here
         });
 
-};
+}
 
 init();

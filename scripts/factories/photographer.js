@@ -17,7 +17,7 @@ function photographerFactory(data) {
         const h2 = document.createElement( 'a' );
         h2.textContent = name;
         h2.setAttribute("href", "./photographer.html?id=" + id)
-        h2.setAttribute("aria-describedby", "link-photographerPage")
+       
         const cityPhotographer = document.createElement( 'p' );
         cityPhotographer.setAttribute("class", "p-cityPhotographer")
         cityPhotographer.textContent = city;
