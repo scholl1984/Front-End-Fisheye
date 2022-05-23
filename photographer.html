@@ -36,13 +36,13 @@
             <form>
                <div>
                   <label for="First name">Prénom</label>
-                  <input type="text" name="First name" id="First name" aria-labelledby="First name"/>
+                  <input type="text" name="First name" id="First name" aria-labelledby="First name" onchange="infoInputFirstName()"/>
                   <label for="Last name">Nom</label>
-                  <input type="text" name="Last name" id="Last name" aria-labelledby="Last name"/>
+                  <input type="text" name="Last name" id="Last name" aria-labelledby="Last name" onchange="infoInputLastName ()"/>
                   <label for="email">Mail</label>
-                  <input type="text" name="email" id="email" aria-labelledby="email"/>
+                  <input type="text" name="email" id="email" aria-labelledby="email" onchange="infoInputEmail ()"/>
                   <label for="text">Votre Message</label>
-                  <input type="text" name="text" id="text" aria-labelledby="Your Message"/>
+                  <input type="text" name="text" id="text" aria-labelledby="Your Message" onchange="infoInputText ()"/>
                </div>
                <button class="contact_send" type="text" name="send" aria-label="Send">Envoyer</button>
             </form>

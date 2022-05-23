@@ -38,8 +38,13 @@ async function displayDataOuiOui(data) {
     const email = document.getElementById("email").value;
     const text = document.getElementById("text").value;
 
+    
+
+
     let button = document.querySelector(".contact_send");
     button.disabled = true;
+    
+    
 
     let params = (new URL(window.location)).searchParams;
     let id = params.get("id")
@@ -53,8 +58,25 @@ async function displayDataOuiOui(data) {
     pModal.innerHTML = name;
 
     console.log(firstName, lastName, email, text)
-
+    
 }
+
+function infoInputFirstName () {
+    console.log(document.getElementById("First name").value)
+}
+
+function infoInputLastName () {
+    console.log(document.getElementById("Last name").value)
+}
+
+function infoInputEmail () {
+    console.log(document.getElementById("email").value)
+}
+
+function infoInputText () {
+    console.log(document.getElementById("text").value)
+}
+
 
 async function init() {
     fetch('../data/photographers.json')

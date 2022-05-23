@@ -3,10 +3,9 @@ const Carousel = document.querySelector(".carousel")
 const LinkOnPhoto = document.querySelector("#photograph-section-id")
 const LogoPhotographerPage = document.getElementById("logo1")
 const infoBar = document.querySelector(".infobar")
-const closeCursor = document.querySelector(".close_cursor")
 const PhotographHeader = document.getElementById("photograph-header-id");
 const TrierMenu = document.getElementById("sort__menu")
-let slideIndex
+let slideIndex;
 
 // Open the carousel
 
@@ -36,7 +35,7 @@ function closeCarousel() {
 }
 
 async function displayDataLightbox(data) {
-    const lightboxContent = document.getElementById("lightBox-content")
+
     let params = (new URL(window.location)).searchParams;
     let id = params.get("id")
 
@@ -56,14 +55,13 @@ async function displayDataLightbox(data) {
 }
 
 function renderLightbox (name, photographerMedia) {
-    
+
 let lighBoxContent = document.querySelector(".slideshow-container")
 lighBoxContent.innerHTML = "";
 const [first] = name.split(' ');
 console.log(photographerMedia)
 
     photographerMedia.map((media) => {
-        
       
         if (media.image) {
             const photoLightBox = document.createElement("img");
