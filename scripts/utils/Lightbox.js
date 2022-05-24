@@ -9,15 +9,15 @@ let slideIndex;
 
 // Open the carousel
 
-function openCarousel(index) {
+function openCarousel(index, photographerMedia) {
     Carousel.style.display = "block";
     LinkOnPhoto.style.display = "none";
     LogoPhotographerPage.style.display = "none";
     infoBar.style.display = "none";
     PhotographHeader.style.display = "none";
     TrierMenu.style.display = "none";
-    showSlides(index)
-    
+    showSlides(index, photographerMedia)
+    console.log(photographerMedia)
 }
 
 // Close the carousel
@@ -71,10 +71,12 @@ console.log(photographerMedia)
             titleSlide.innerHTML = media.title ;   
             divSlide.setAttribute("class", "mySlides")
             photoLightBox.setAttribute("src", `assets/photographers/Sample Photos-3/${first}/${media.image}`);
+            photoLightBox.setAttribute("class", "photophotograph");
+            photoLightBox.setAttribute("alt", "photo of the photographer");
+            photoLightBox.setAttribute("aria-label",`${media.title}`);
             divSlide.append(titleSlide)
             divSlide.append(photoLightBox)
             lighBoxContent.append(divSlide)
-
 
         } else if (media.video) {
             const videoLightBox = document.createElement("video");
@@ -86,6 +88,8 @@ console.log(photographerMedia)
             divSlide.append(titleSlideVideo)
             videoLightBox.setAttribute("src", `assets/photographers/Sample Photos-3/${first}/${media.video}`);
             videoLightBox.setAttribute("type", "video/mp4")
+            videoLightBox.setAttribute("alt", "photo of the photographer");
+            videoLightBox.setAttribute("aria-label",`${media.title}`);
             
             divSlide.append(videoLightBox)
             lighBoxContent.append(divSlide)

@@ -122,8 +122,8 @@ async function displayDataOui(data) {
 
 // InfoMenu 
 
-
 function renderPhotographerMedia() {
+
     const section = document.getElementById("photograph-section-id");
     section.innerHTML = "";
 
@@ -140,6 +140,8 @@ function renderPhotographerMedia() {
         if (media.image) {
             pictureofthephotograph.setAttribute("src", `assets/photographers/Sample Photos-3/${first}/${media.image}`);
             pictureofthephotograph.setAttribute("class", "photophotograph");
+            pictureofthephotograph.setAttribute("alt", "photo of the photographer");
+            pictureofthephotograph.setAttribute("aria-label", `${media.title}`);
             pictureofthephotograph.setAttribute("onclick", `openCarousel(${photographerMedia.indexOf(media)})`);
             pictureofthephotograph.style.width= "320px"
             pictureofthephotograph.style.height= "300px"
@@ -181,6 +183,7 @@ function renderPhotographerMedia() {
             videophotograph.setAttribute("src", `assets/photographers/Sample Photos-3/${first}/${media.video}`);
             videophotograph.setAttribute("type", "video/mp4")
             videophotograph.setAttribute("class", "photophotograph");
+            videophotograph.setAttribute("aria-label", `${media.title}`);
             videophotograph.setAttribute("onclick", `openCarousel(${photographerMedia.indexOf(media)})`);
             videophotograph.style.width= "320px"
             videophotograph.style.height= "300px"
@@ -190,7 +193,7 @@ function renderPhotographerMedia() {
 
         }
 
-        
+        console.log(photographerMedia)
         let sum = photographerMedia.reduce((acc, media) => {
             return acc += media.likes
         }, 0);
@@ -209,7 +212,7 @@ function renderPhotographerMedia() {
             document.getElementById(`like-${media.id})`).innerHTML = media.likes + "" + "&#9829;";
         })
     })
-
+    
 }
 
 // Function init
