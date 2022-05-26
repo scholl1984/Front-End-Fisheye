@@ -7,6 +7,7 @@ let Name;
 let Price;
 
 //show dropdown menu
+// eslint-disable-next-line no-unused-vars
 function showDropdown() {
     document.getElementById("myDropdown").classList.toggle("show");
 }
@@ -74,6 +75,8 @@ function sortPhotographerMedias(defaultCase) {
 
     }
     renderPhotographerMedia()
+    // eslint-disable-next-line no-undef
+    renderLightbox(Name, photographerMedia)
 }
 
 // Media Photograph 
@@ -94,7 +97,7 @@ async function displayDataOui(data) {
         portrait,
         city,
         tagline,
-        price
+        price,
     } = photographerProfilInfo[0];
 
 
@@ -184,6 +187,9 @@ function renderPhotographerMedia() {
             videophotograph.setAttribute("type", "video/mp4")
             videophotograph.setAttribute("class", "photophotograph");
             videophotograph.setAttribute("aria-label", `${media.title}`);
+            videophotograph.autoplay = true
+            videophotograph.loop = true
+            
             videophotograph.setAttribute("onclick", `openCarousel(${photographerMedia.indexOf(media)})`);
             videophotograph.style.width= "320px"
             videophotograph.style.height= "300px"
@@ -193,7 +199,6 @@ function renderPhotographerMedia() {
 
         }
 
-        console.log(photographerMedia)
         let sum = photographerMedia.reduce((acc, media) => {
             return acc += media.likes
         }, 0);

@@ -16,6 +16,7 @@ async function init() {
     return response.json();
   }).then(jsondata => {
     displayData(jsondata)
+    
   }).catch(err => {
     // Do something for an error here
   });

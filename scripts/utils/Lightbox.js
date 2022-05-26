@@ -17,7 +17,7 @@ function openCarousel(index, photographerMedia) {
     PhotographHeader.style.display = "none";
     TrierMenu.style.display = "none";
     showSlides(index, photographerMedia)
-    console.log(photographerMedia)
+    
 }
 
 // Close the carousel
@@ -59,6 +59,7 @@ function renderLightbox (name, photographerMedia) {
 let lighBoxContent = document.querySelector(".slideshow-container")
 lighBoxContent.innerHTML = "";
 const [first] = name.split(' ');
+
 console.log(photographerMedia)
 
     photographerMedia.map((media) => {
@@ -85,6 +86,9 @@ console.log(photographerMedia)
             divSlide.setAttribute("class", "mySlides")
             titleSlideVideo.setAttribute("class", "title_lightbox")
             titleSlideVideo.innerHTML = media.title ; 
+            videoLightBox.autoplay = true;
+            videoLightBox.loop = true
+
             divSlide.append(titleSlideVideo)
             videoLightBox.setAttribute("src", `assets/photographers/Sample Photos-3/${first}/${media.video}`);
             videoLightBox.setAttribute("type", "video/mp4")
