@@ -320,6 +320,8 @@ section img {
 	padding: 0px;
 	margin: 0px;
 	margin-top: -57px;
+	border: transparent;
+    background-color: #DB8876;
 }
 
 form {
@@ -433,6 +435,10 @@ form input {
 	top: -88px;
 	font-size: 70px;
 	color: #901C1C;
+    background-color: white;
+    border: transparent;
+	cursor: pointer;
+
 }
 
 .mySlides img {

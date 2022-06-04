@@ -29,9 +29,9 @@
                      <p class="nameModal"></p>
                   </div>
                </div>
-               <div class="close_modal" aria-label="Close contact Form">
-                  <img src="assets/icons/close.svg" onclick="closeModal()" alt="Close" aria-label="Close contact form"/>
-               </div>
+               <button class="close_modal" aria-label="Close contact Form"  onclick="closeModal()">
+                  <img src="assets/icons/close.svg" alt="Close" aria-label="Close contact form"/>
+               </button>
             </header>
             <form>
                <div>
@@ -74,11 +74,11 @@
       </section>
       <div class="infobar"></div>
       <div class="carousel">
-         <span class="close-cursor" onclick="closeCarousel()" aria-label="close dialog">&times;</span>
+         <button class="close-cursor" onclick="closeCarousel()" aria-label="close dialog">&times;</button>
          <div class="slideshow-container"> 
          </div>
-         <div class="direction prev" id='prev-button' tabindex="0"  role="button" aria-label="Previous Image">❮</div>
-         <div class="direction next" id='next-button' tabindex="0"  role="button" aria-label="Next Image">❯</div>
+         <button class="direction prev" id='prev-button' tabindex="0"  role="button" aria-label="Previous Image">❮</button>
+         <button class="direction next" id='next-button' tabindex="0"  role="button" aria-label="Next Image">❯</button>
       </div>
       </div>
       <script src="./scripts//factories/photographer.js"></script>

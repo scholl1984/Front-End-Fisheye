@@ -38,13 +38,8 @@ async function displayDataOuiOui(data) {
     const email = document.getElementById("email").value;
     const text = document.getElementById("text").value;
 
-    
-
-
     let button = document.querySelector(".contact_send");
     button.disabled = true;
-    
-    
 
     let params = (new URL(window.location)).searchParams;
     let id = params.get("id")

@@ -79,16 +79,16 @@ function sortPhotographerMedias(defaultCase) {
     renderLightbox(Name, photographerMedia)
 }
 
-// Media Photograph 
+// Dispaly Media Photograph 
 
 async function displayDataOui(data) {
 
-    // Info Media
+    // Data Media
     photographerMedia = data.media.filter((media) => {
         return media.photographerId.toString() === id
     });
 
-    // Info Photograph
+    // Data Photograph
     let photographerProfilInfo = data.photographers.filter((photographer) => {
         return photographer.id.toString() === id
     });
@@ -104,7 +104,7 @@ async function displayDataOui(data) {
     Price = price;
     Name = name;
 
-    // Header Photograph
+    // Display Header Photograph
 
     const headerPhotograph = document.querySelector(".photograph-header")
     const picture = `assets/photographers/Sample Photos-3/Photographers ID Photos/${portrait}`;
@@ -123,7 +123,7 @@ async function displayDataOui(data) {
 
 }
 
-// InfoMenu 
+// Display Photo Photographer 
 
 function renderPhotographerMedia() {
 
@@ -134,9 +134,11 @@ function renderPhotographerMedia() {
 
         const [first] = Name.split(' ');
 
+        const link = document.createElement('a');
         const linkPictureofthephotograph = document.createElement('a');
+        const linkTitle = document.createElement('a');
         const pictureofthephotograph = document.createElement('img');
-        const titleofthephotograph = document.createElement('div');
+        const titleofthephotograph = document.createElement('a');
         const titleofthephoto = document.createElement('div');
         const nbrLikes = document.createElement('button');
         
@@ -145,9 +147,12 @@ function renderPhotographerMedia() {
             pictureofthephotograph.setAttribute("class", "photophotograph");
             pictureofthephotograph.setAttribute("alt", "photo of the photographer");
             pictureofthephotograph.setAttribute("aria-label", `${media.title}`);
-            pictureofthephotograph.setAttribute("onclick", `openCarousel(${photographerMedia.indexOf(media)})`);
+            linkPictureofthephotograph.setAttribute("onclick", `openCarousel(${photographerMedia.indexOf(media)})`);
             pictureofthephotograph.style.width= "320px"
             pictureofthephotograph.style.height= "300px"
+            
+            linkPictureofthephotograph.setAttribute("href", "#")
+
 
             titleofthephotograph.setAttribute("class", "title_photo");
             titleofthephoto.setAttribute("class", "title");
@@ -156,21 +161,28 @@ function renderPhotographerMedia() {
             nbrLikes.setAttribute("id", `like-${media.id})`);
 
             nbrLikes.innerHTML = media.likes + "" + "&#9829;";
+            
 
             titleofthephotograph.append(titleofthephoto, nbrLikes)
             titleofthephoto.innerHTML = media.title;
             titleofthephoto.style.fontSize = '13px'
 
-            linkPictureofthephotograph.append(pictureofthephotograph, titleofthephotograph);
-            section.append(linkPictureofthephotograph)
+            linkPictureofthephotograph.append(pictureofthephotograph);
+            linkTitle.append(titleofthephotograph);
+            link.append(linkPictureofthephotograph, titleofthephotograph, );
+            section.append(link)
 
 
         } else if (media.video) {
 
+                
             const linkVideoofthephotograph = document.createElement('a');
             const videophotograph = document.createElement('video');
             const titleofthephotograph1 = document.createElement('div');
             const titleofthevideo = document.createElement('div');
+
+            
+            videophotograph.setAttribute("onclick", `openCarousel(${photographerMedia.indexOf(media)})`);
 
             titleofthephotograph1.setAttribute("class", "title_video");
             titleofthevideo.setAttribute("class", "title");
@@ -190,7 +202,7 @@ function renderPhotographerMedia() {
             videophotograph.autoplay = true
             videophotograph.loop = true
             
-            videophotograph.setAttribute("onclick", `openCarousel(${photographerMedia.indexOf(media)})`);
+           
             videophotograph.style.width= "320px"
             videophotograph.style.height= "300px"
 
@@ -198,6 +210,8 @@ function renderPhotographerMedia() {
             linkVideoofthephotograph.append(videophotograph, titleofthephotograph1);
 
         }
+
+        // Menu Info Photographer
 
         let sum = photographerMedia.reduce((acc, media) => {
             return acc += media.likes

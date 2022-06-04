@@ -17,7 +17,6 @@ function openCarousel(index, photographerMedia) {
     PhotographHeader.style.display = "none";
     TrierMenu.style.display = "none";
     showSlides(index, photographerMedia)
-    
 }
 
 // Close the carousel
@@ -59,8 +58,6 @@ function renderLightbox (name, photographerMedia) {
 let lighBoxContent = document.querySelector(".slideshow-container")
 lighBoxContent.innerHTML = "";
 const [first] = name.split(' ');
-
-console.log(photographerMedia)
 
     photographerMedia.map((media) => {
       
@@ -127,7 +124,6 @@ function showSlides(n) {
           if (slideshowPage.classList.contains("carousel")) {
               let slides = slideshowPage.querySelectorAll(".mySlides");
              for (i = 0; i < slides.length; i++) {
-                //   console.log({slideIndex})
                   if(i === slideIndex){
                     slides[i].style.display = "block";
                   }else {
@@ -145,7 +141,6 @@ async function init() {
             return response.json();
         }).then(jsondata => {
             displayDataLightbox(jsondata)
-            //showSlides(jsondata.length)
         }).catch(err => {
             // Do something for an error here
         });
